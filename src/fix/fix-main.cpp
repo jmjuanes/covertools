@@ -26,7 +26,7 @@ int fix_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the -bed option
-    if(checkOpt("-bed", 2, arg_value, arg_length) == true)
+    if(checkOpt("-bed", 4, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -42,7 +42,7 @@ int fix_main(int argc, char *argv[])
     }
 
     //Check the cover input option -ci
-    else if(checkOpt("-ci", 2, arg_value, arg_length) == true)
+    else if(checkOpt("-ci", 3, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -58,7 +58,7 @@ int fix_main(int argc, char *argv[])
     }
 
     //Check the cover output option -co
-    else if(checkOpt("-co", 2, arg_value, arg_length) == true)
+    else if(checkOpt("-co", 3, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
