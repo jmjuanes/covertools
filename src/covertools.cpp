@@ -35,7 +35,6 @@ using namespace std;
 
 //Include normalize command functions
 #include "normalize/normalize-help.cpp"
-#include "normalize/normalize-apply.cpp"
 #include "normalize/normalize-mean.cpp"
 #include "normalize/normalize-main.cpp"
 
@@ -46,7 +45,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
   //Check the number of commands
-  if(argc < 2){ return covertools_help(1); }
+  if(argc < 2){ return covertools_help(); }
 
   //Get the command
   string cmd = argv[1];
@@ -58,19 +57,21 @@ int main(int argc, char **argv)
   if(cmd == "get"){ return get_main(argc-1, argv+1); }
 
   //Check the index command
-  if(cmd == "index"){ return index_main(argc-1, argv+1); } 
+  if(cmd == "index"){ return index_main(argc-1, argv+1); }
 
   //Check the normalize command
   else if(cmd == "normalize"){ return normalize_main(argc-1, argv+1); }
 
   //Check for help
-  else if(cmd == "-h" || cmd == "--help" || cmd == "help"){ return covertools_help(0); }
+  else if(cmd == "-h" || cmd == "--help" || cmd == "help"){ return covertools_help(); }
 
   //Unknow command
   else
   {
     //Display error
     cerr << "Unknown command " << cmd << endl;
+
+    //Exit with error
     return 1;
   }
 
