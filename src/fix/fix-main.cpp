@@ -41,8 +41,8 @@ int fix_main(int argc, char *argv[])
       i = i + 1;
     }
 
-    //Check the -cover option
-    else if(checkOpt("-cover", 2, arg_value, arg_length) == true)
+    //Check the cover input option -ci
+    else if(checkOpt("-ci", 2, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -57,8 +57,8 @@ int fix_main(int argc, char *argv[])
       i = i + 1;
     }
 
-    //Check the -out options
-    else if(checkOpt("-out", 2, arg_value, arg_length) == true)
+    //Check the cover output option -co
+    else if(checkOpt("-co", 2, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -82,13 +82,13 @@ int fix_main(int argc, char *argv[])
   }
 
   //Check for no regions file
-  if(regions_has == false){ cerr << "ERROR: no regions file provided" << endl; show_help = true; }
+  if(regions_has == false){ cerr << "ERROR: no BED file provided" << endl; show_help = true; }
 
   //Check for no input cover file
-  if(cover_input_has == false){ cerr << "ERROR: no input cover file provided" << endl; show_help = true; }
+  if(cover_input_has == false){ cerr << "ERROR: no input coverage file provided" << endl; show_help = true; }
 
   //Check for no output cover file
-  if(cover_output_has == false){ cerr << "ERROR: no output cover file provided" << endl; show_help = true; }
+  if(cover_output_has == false){ cerr << "ERROR: no output coverage file provided" << endl; show_help = true; }
 
   //Check for display the help
   if(show_help == true){ return fix_help(); }
