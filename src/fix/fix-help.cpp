@@ -9,11 +9,11 @@ int fix_help(void)
   //Display the usage
   cout << "Usage: covertools fix -bed <BED_FILE> -ci <COVER_INPUT> -co <COVER_OUTPUT>" << endl << endl;
 
-  //Display the options
-  cout << "Options: " << endl;
-  cout << "\t-bed\t"  << "Path to the BED file with the delimited regions." << endl;
-  cout << "\t-ci\t"   << "Path to the input coverage file." << endl;
-  cout << "\t-co\t"   << "Path to the output coverage file." << endl;
+  //Display the mandatory arguments
+  cout << "Mandatory: " << endl;
+  cout << "\t-bed\t"    << "Path to the BED file with the delimited regions." << endl;
+  cout << "\t-ci\t"     << "Path to the input coverage file." << endl;
+  cout << "\t-co\t"     << "Path to the output coverage file." << endl;
 
   //Exit
   return 0;
