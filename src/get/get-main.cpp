@@ -5,10 +5,10 @@ int get_main(int argc, char *argv[])
   bool show_help = false;
 
   //Has parameters
-  bool cover_has = false, index_has = false, regions_has = false;
+  bool cover_has = false, index_has = false, region_has = false;
 
   //Files parameters
-  string regions, cover_file, index_file;
+  string region, cover_file, index_file;
 
   //Check the number of arguments
   if(argc == 1){ return get_help(); }
@@ -22,17 +22,17 @@ int get_main(int argc, char *argv[])
     //Get the argument length
     int arg_length = (int) strlen(argv[i]);
 
-    //Check the bed argument
-    if(checkOpt("-bed", 4, arg_value, arg_length) == true)
+    //Check the region argument
+    if(checkOpt("-region", 8, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
 
-      //Set regions file as true
-      regions_has = true;
+      //Set region name as true
+      region_has = true;
 
-      //Save the regions file
-      regions = argv[i + 1];
+      //Save the region name
+      region = argv[i + 1];
 
       //Increment the i counter
       i = i + 1;
@@ -78,8 +78,8 @@ int get_main(int argc, char *argv[])
     }
   }
 
-  //Check for no regions file
-  if(regions_has == false){ cerr << "ERROR: no wanted regions provided" << endl; show_help = true; }
+  //Check for no region name
+  if(region_has == false){ cerr << "ERROR: no wanted region provided" << endl; show_help = true; }
 
   //Check for no input cover file
   if(cover_has == false){ cerr << "ERROR: no cover file provided" << endl; show_help = true; }
@@ -116,6 +116,9 @@ int get_main(int argc, char *argv[])
   //Auxiliar strings
   string aux, line = "", arr[4];
 
+  //Parse the region
+  region = strLower(region);
+
   //Read all the regions
   while(!input_index.eof())
   {
@@ -129,7 +132,7 @@ int get_main(int argc, char *argv[])
     strArr(aux, arr, 4, "\t");
 
     //Check the region name
-    if(arr[0] != regions){ continue; }
+    if(strLower(arr[0]) != region){ continue; }
 
     //Get the start position
     int start = stoi(arr[1]);
