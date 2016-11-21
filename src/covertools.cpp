@@ -5,6 +5,7 @@
 #include <string>
 #include <cstdio>
 #include <cmath>
+#include <ctype>
 
 //Namespace
 using namespace std;
@@ -13,6 +14,7 @@ using namespace std;
 #include "lib/options.cpp"
 #include "lib/region.cpp"
 #include "lib/str-arr.cpp"
+#include "lib/str.cpp"
 #include "lib/version.cpp"
 
 //Include cover libs
