@@ -45,7 +45,7 @@ int normalize_main(int argc, char *argv[])
     }
 
     //Check the cover input option
-    else if(checkOpt("-ci", 3, arg_value, arg_length) == true)
+    else if(checkOpt("-cover", 6, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -61,7 +61,7 @@ int normalize_main(int argc, char *argv[])
     }
 
     //Check the cover output option
-    else if(checkOpt("-co", 3, arg_value, arg_length) == true)
+    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
