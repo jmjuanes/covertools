@@ -42,7 +42,7 @@ int fix_main(int argc, char *argv[])
     }
 
     //Check the cover input option -ci
-    else if(checkOpt("-ci", 3, arg_value, arg_length) == true)
+    else if(checkOpt("-cover", 6, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -57,8 +57,8 @@ int fix_main(int argc, char *argv[])
       i = i + 1;
     }
 
-    //Check the cover output option -co
-    else if(checkOpt("-co", 3, arg_value, arg_length) == true)
+    //Check the cover output option -out
+    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
