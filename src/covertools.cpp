@@ -10,9 +10,9 @@
 using namespace std;
 
 //Include libs
-#include "lib/arguments.cpp"
-#include "lib/str-arr.cpp"
+#include "lib/options.cpp"
 #include "lib/region.cpp"
+#include "lib/str-arr.cpp"
 #include "lib/version.cpp"
 
 //Include cover libs
