@@ -1,51 +1,33 @@
-//Find the in-del regions
-void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_regions, int control, int n, float min_cover, float min_region, float threshold)
+//Calculate the differences and return if is a valid region
+bool indel_find_valid(float value1, float value2, float min, float threshold)
 {
-  //Initialize the regions list
-  list_regions = NULL;
+  //Calculate the first difference
+  float diff1 = (value2 != 0) ? value1 / value2 : 1;
 
-  //Regions pointers
-  RegionList end = NULL, region_start = NULL, region_end = NULL;
+  //Calculate the second difference
+  float diff2 = (value1 != 0) ? value2 / value1 : 1;
 
-  //Read all the coverage columns
-  for(int i = 0; i < n; i++)
+  //Check the first difference
+  if(min <= value1 && diff1 == 1){ diff1 = value1; }
+
+  //Check the second difference
+  if(min <= value2 && diff2 == 1){ diff2 = value2; }
+
+  //Check the first condition
+  bool condition1 = (threshold <= diff1 || threshold <= diff2) ? true : false;
+
+  //Get the second condition value
+  bool condition2 = (min <= value1 || min <= value2) ? true : false;
+
+  //Check the conditions
+  if(condition1 == false || condition2 == false)
   {
-    //Check the control value
-    if(i == control){ continue; }
-
-    //Reset the region start pointer
-    region_start = NULL;
-
-    //Reset the region end pointer
-    region_end = NULL;
-
-    //Compare the control with a column
-    indel_find_compare(list_cover, list_control, i, region_start, region_end, min_cover, min_region, threshold);
-
-    //Check the start region
-    if(region_start == NULL){ continue; }
-
-    //Check the regions list
-    if(list_regions == NULL)
-    {
-      //Initialize the regions list
-      list_regions = region_start;
-    }
-    else
-    {
-      //Update the end
-      end->next = region_start;
-    }
-
-    //Save the end
-    end = region_end;
+    //Return false
+    return false;
   }
 
-  //Finish the list
-  end->next = NULL;
-
-  //Exit
-  return;
+  //Default, return true
+  return true;
 }
 
 //Compare two coverage values
@@ -147,34 +129,52 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
   return;
 }
 
-//Calculate the differences and return if is a valid region
-bool indel_find_valid(float value1, float value2, float min, float threshold)
+//Find the in-del regions
+void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_regions, int control, int n, float min_cover, float min_region, float threshold)
 {
-  //Calculate the first difference
-  float diff1 = (value2 != 0) ? value1 / value2 : 1;
+  //Initialize the regions list
+  list_regions = NULL;
 
-  //Calculate the second difference
-  float diff2 = (value1 != 0) ? value2 / value1 : 1;
+  //Regions pointers
+  RegionList end = NULL, region_start = NULL, region_end = NULL;
 
-  //Check the first difference
-  if(min <= value1 && diff1 == 1){ diff1 = value1; }
-
-  //Check the second difference
-  if(min <= value2 && diff2 == 1){ diff2 = value2; }
-
-  //Check the first condition
-  bool condition1 = (threshold <= diff1 || threshold <= diff2) ? true : false;
-
-  //Get the second condition value
-  bool condition2 = (min <= value1 || min <= value2) ? true : false;
-
-  //Check the conditions
-  if(condition1 == false || condition2 == false)
+  //Read all the coverage columns
+  for(int i = 0; i < n; i++)
   {
-    //Return false
-    return false;
+    //Check the control value
+    if(i == control){ continue; }
+
+    //Reset the region start pointer
+    region_start = NULL;
+
+    //Reset the region end pointer
+    region_end = NULL;
+
+    //Compare the control with a column
+    indel_find_compare(list_cover, list_control, i, region_start, region_end, min_cover, min_region, threshold);
+
+    //Check the start region
+    if(region_start == NULL){ continue; }
+
+    //Check the regions list
+    if(list_regions == NULL)
+    {
+      //Initialize the regions list
+      list_regions = region_start;
+    }
+    else
+    {
+      //Update the end
+      end->next = region_start;
+    }
+
+    //Save the end
+    end = region_end;
   }
 
-  //Default, return true
-  return true;
+  //Finish the list
+  end->next = NULL;
+
+  //Exit
+  return;
 }
