@@ -144,8 +144,8 @@ int fix_main(int argc, char *argv[])
     //Check for empty region
     if(aux == ""){ break; }
 
-    //Get the region object
-    Region *region = new Region(aux);
+    //Build the region
+    Region region = tabToRegion(aux);
 
     //Initialize the position
     position = region->start;
