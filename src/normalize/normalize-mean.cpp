@@ -1,22 +1,3 @@
-//Use the mean algorithm to normalize the coverage matrix
-void normalize_mean(CoverList l, int num)
-{
-  //Initialize the cover mean
-  double * mean = new double[num];
-
-  //Calculate the mean
-  normalize_mean_calculate(l, mean, num);
-
-  //Apply the mean
-  normalize_mean_apply(l, mean, num);
-
-  //Delete the mean array
-  delete[] mean;
-
-  //Exit
-  return;
-}
-
 //Calculate the mean of a cover list
 void normalize_mean_calculate(CoverList l, double mean[], int n)
 {
@@ -76,6 +57,25 @@ void normalize_mean_apply(CoverList & l, double mean[], int n)
     //Next coverage element
     aux = aux->next;
   }
+
+  //Exit
+  return;
+}
+
+//Use the mean algorithm to normalize the coverage matrix
+void normalize_mean(CoverList l, int num)
+{
+  //Initialize the cover mean
+  double * mean = new double[num];
+
+  //Calculate the mean
+  normalize_mean_calculate(l, mean, num);
+
+  //Apply the mean
+  normalize_mean_apply(l, mean, num);
+
+  //Delete the mean array
+  delete[] mean;
 
   //Exit
   return;
