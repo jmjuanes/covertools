@@ -39,10 +39,10 @@ void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_
 
     //Save the end
     end = region_end;
-  }
 
-  //Finish the list
-  end->next = NULL;
+    //Finish the list
+    end->next = NULL;
+  }
 
   //Exit
   return;
