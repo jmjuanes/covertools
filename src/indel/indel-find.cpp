@@ -1,5 +1,5 @@
 //Find the in-del regions
-void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_regions, int control, int n, float min_cover, float min_window, float threshold)
+void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_regions, int control, int n, float min_cover, float min_region, float threshold)
 {
   //Initialize the regions list
   list_regions = NULL;
@@ -20,7 +20,7 @@ void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_
     region_end = NULL;
 
     //Compare the control with a column
-    indel_find_compare(list_cover, list_control, i, region_start, region_end, min_cover, min_window, threshold);
+    indel_find_compare(list_cover, list_control, i, region_start, region_end, min_cover, min_region, threshold);
 
     //Check the start region
     if(region_start == NULL){ continue; }
@@ -49,7 +49,7 @@ void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_
 }
 
 //Compare two coverage values
-void indel_find_compare(CoverList list_cover, CoverList list_control, int index, RegionList & start, RegionList & end, float min_cover, float min_window, float threshold)
+void indel_find_compare(CoverList list_cover, CoverList list_control, int index, RegionList & start, RegionList & end, float min_cover, float min_region, float threshold)
 {
   //Coverage pointers
   CoverList aux_cover = list_cover, aux_control = list_control;
@@ -118,7 +118,7 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
     aux->length = abs(aux->end - aux->start) + 1;
 
     //Check the length
-    if(aux->length > 1 && min_window <= aux->length)
+    if(aux->length > 1 && min_region <= aux->length)
     {
       //Check for empty region start
       if(start == NULL)
