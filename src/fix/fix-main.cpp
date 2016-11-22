@@ -148,7 +148,7 @@ int fix_main(int argc, char *argv[])
     Region region = tabToRegion(aux);
 
     //Initialize the position
-    position = region->start;
+    position = region.start;
 
     //Read the cover file
     while(!input_cover.eof())
@@ -166,13 +166,13 @@ int fix_main(int argc, char *argv[])
       int pos = stoi(arr[1]);
 
       //Check the position
-      if(region->end < pos || region->chromosome != arr[0]){ break; }
+      if(region.end < pos || region.chromosome != arr[0]){ break; }
 
       //Add the missing positions
       while(position < pos)
       {
         //Add the line
-        output_cover << region->chromosome << "\t" << position << "\t" << "0" << endl;
+        output_cover << region.chromosome << "\t" << position << "\t" << "0" << endl;
 
         //Increment the position counter
         position = position + 1;
@@ -189,10 +189,10 @@ int fix_main(int argc, char *argv[])
     }
 
     //Add the others positions on the region
-    while(position <= region->end)
+    while(position <= region.end)
     {
       //Add the line
-      output_cover << region->chromosome << "\t" << position << "\t" << "0" << endl;
+      output_cover << region.chromosome << "\t" << position << "\t" << "0" << endl;
 
       //Increment the position counter
       position = position + 1;
