@@ -1,5 +1,5 @@
 //Save the list to file
-void coverSave(string file, Chr l, int n)
+void coverSave(string file, CoverList l, int n)
 {
   //Ofstream object
   ofstream output;
@@ -17,46 +17,33 @@ void coverSave(string file, Chr l, int n)
     exit(EXIT_FAILURE);
   }
 
-  //Auxiliar pointer for chromosome
-  Chr c = l;
-
-  //Auxiliar pointer for position
-  Pos p;
+  //Auxiliar pointer
+  CoverList aux = l;
 
   //Tab character
   string tab = "\t";
 
-  //Read all the chromosomes
-  while(c != NULL)
+  //Read all the coverage positions
+  while(aux != NULL)
   {
-    //Initialize the positions pointer
-    p = c->positions;
+    //Save to file
+    output << aux->chromosome << tab << aux->position << tab;
 
-    //Read all the positions
-    while(p != NULL)
+    //Save all the covers
+    for(int i = 0; i < n; i++)
     {
-      //Save to file
-      output << c->name << tab << p->pos << tab;
+      //Check the index
+      if(i > 0){ output << tab; }
 
-      //Save all the covers
-      for(int i = 0; i < n; i++)
-      {
-        //Check the index
-        if(i > 0){ output << tab; }
-
-        //Save the cover for the file i
-        output << p->cover[i];
-      }
-
-      //End the line
-      output << endl;
-
-      //Next
-      p = p->next;
+      //Save the cover for the file i
+      output << aux->values[i];
     }
 
-    //Next chromosome
-    c = c->next;
+    //End the line
+    output << endl;
+
+    //Next coverage value
+    aux = aux->next;
   }
 
   //Close the output file
