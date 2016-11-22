@@ -32,6 +32,9 @@ void normalize_mean_calculate(CoverList l, double mean[], int n)
   {
     //Calculate the mean of the column i
     mean[i] = mean[i]/total;
+
+    //Display in console
+    cout << "Mean column " << i << ": " << mean[i] << endl;
   }
 
   //Exit
