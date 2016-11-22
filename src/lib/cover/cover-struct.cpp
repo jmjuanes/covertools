@@ -1,36 +1,24 @@
 //Max number of bam files
-const int _MAX_BAMS = 100;
+const int _MAX_BAMS = 150;
 
 //Initialize the structures
-struct Position;
-struct Chromosome;
+struct Cover;
 
 //Initialize the typedefs
-typedef Chromosome * Chr;
-typedef Position * Pos;
+typedef Cover * CoverList;
 
-//Define the structure for chromosomes
-struct Chromosome
+//Define the structure for coverages
+struct Cover
 {
-  //Chromosome name
-  string name;
-
-  //Positions sublist
-  Pos positions = NULL;
-
-  //Next chromosome
-  Chr next = NULL;
-};
-
-//Define the structure for positions
-struct Position
-{
+  //Chromosome
+  string chromosome;
+  
   //Position
-  int pos;
+  int position;
 
   //Array with all the coverages
-  float * cover;
+  float * values;
 
-  //Next position pointer
-  Pos next = NULL;
+  //Next coverage pointer
+  CoverList next = NULL;
 };
