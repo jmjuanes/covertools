@@ -5,7 +5,7 @@
 #include <string>
 #include <cstdio>
 #include <cmath>
-#include <ctype>
+#include <cctype>
 
 //Namespace
 using namespace std;
