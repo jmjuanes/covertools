@@ -1,5 +1,5 @@
 //Find the in-del regions
-void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_regions, int control, int n, float min_cover, float min_region, float threshold)
+void indel_find(CoverList list_cover, CoverList list_control, RegionList & list_regions, int n, int control, float min_cover, float min_region, float threshold)
 {
   //Initialize the regions list
   list_regions = NULL;
