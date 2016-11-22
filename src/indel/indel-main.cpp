@@ -189,7 +189,7 @@ int indel_main(int argc, char *argv[])
   indel_control(list_cover, list_control, cover_num, cover_control);
 
   //Find the regions
-  indel_find(list_cover, list_control, list_regions, cover_num, min_cover, min_region, threshold);
+  indel_find(list_cover, list_control, list_regions, cover_num, cover_control, min_cover, min_region, threshold);
 
   //Save the regions
   regionSave(regions_file, list_regions);
