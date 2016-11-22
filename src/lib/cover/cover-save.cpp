@@ -48,4 +48,7 @@ void coverSave(string file, CoverList l, int n)
 
   //Close the output file
   output.close();
+
+  //Exit
+  return;
 }
