@@ -7,6 +7,9 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
   //Regions pointers
   RegionList aux = NULL;
 
+  //Count the number of regions
+  int counter = 0;
+
   //Read all the coverage positions
   while(aux_cover != NULL)
   {
@@ -40,6 +43,9 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
 
     //Initialize the next position
     aux->next = NULL;
+
+    //Display in console
+    //cout << "Detected region at chr" << aux_cover->chromosome << " at position " << aux_cover->position << endl;
 
     //Loop
     do
@@ -91,7 +97,13 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
 
     //Next control list position
     aux_control = aux_control->next;
+
+    //Increment the number of regions detected
+    counter = counter + 1;
   }
+
+  //Display the count
+  cout << "Found " << counter << " regions in column " << index << endl;
 
   //Exit
   return;
