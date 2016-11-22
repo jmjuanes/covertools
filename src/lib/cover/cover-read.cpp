@@ -1,5 +1,5 @@
 //Read a cover file
-void coverRead(string file, Chr & l, int n)
+void coverRead(string file, CoverList & l, int n)
 {
   //Create the ifstream object
   ifstream input;
@@ -18,84 +18,69 @@ void coverRead(string file, Chr & l, int n)
   }
 
   //Auxuliar strings
-  string aux, arr[_MAX_BAMS], chrnow = "null";
-
-  //Auxiliar pointers for the positions
-  Pos p, endp = NULL;
+  string str, arr[_MAX_BAMS], chrnow = "null";
 
   //Auxiliar pointers for the chromosomes
-  Chr c, endc = NULL;
+  CoverList aux, end;
+
+  //Initialize the list
+  l = NULL;
 
   //Read the input file
   while(!input.eof())
   {
     //Get the first line
-    getline(input, aux);
+    getline(input, str);
 
     //Check if is empty string
-    if(aux == "") { continue; }
+    if(str == "") { continue; }
 
     //Converts string to array
-    strArr(aux, arr, _MAX_BAMS, "\t");
+    strArr(str, arr, _MAX_BAMS, "\t");
 
-    //Create the new position
-    p = new Position;
+    //Create the new cover value
+    aux = new Cover;
+
+    //Save the chromosome
+    aux->chromosome = arr[0];
 
     //Save the position
-    p->pos = stoi(arr[1]);
+    aux->position = stoi(arr[1]);
 
-    //Initialize the cover values
-    p->cover = new float[n];
+    //Initialize the coverage values
+    aux->values = new float[n];
 
     //Read all the cover values
     for(int i = 0; i < n; i++)
     {
       //Save the cover value
-      p->cover[i] = stof(arr[i + 2]);
+      aux->values[i] = stof(arr[i + 2]);
     }
 
     //Next element
-    p->next = NULL;
+    aux->next = NULL;
 
-    //Check the chromosome
-    if(arr[0] != chrnow)
+    //Check for empty list
+    if(l == NULL)
     {
-      //Create a new chromosome
-      c = new Chromosome;
-
-      //Save the chromosome name
-      c->name = arr[0];
-
-      //Save the positions list
-      c->positions = p;
-
-      //Get the last element
-      endp = p;
-
-      //Save the chromosome now
-      chrnow = arr[0];
-
       //Initialize the list
-      if(l == NULL){ l = c; }
+      l = aux;
 
-      //Save the next point
-      else{ endc->next = c; }
-
-      //Next
-      endc = c;
+      //Initialize the last element pointer
+      end = l;
     }
     else
     {
-      //Add the next position
-      endp->next = p;
+      //Save this element
+      end->next = aux;
 
-      //Save the position
-      endp = p;
+      //Point to the next element
+      end = aux;
     }
   }
 
   //Finish the list
-  endp->next = NULL;
+  end->next = NULL;
 
   //Close the file
   input.close();
