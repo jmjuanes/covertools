@@ -12,8 +12,6 @@ using namespace std;
 
 //Include libs
 #include "lib/options.cpp"
-#include "lib/region.cpp"
-#include "lib/str-arr.cpp"
 #include "lib/str.cpp"
 #include "lib/version.cpp"
 
@@ -23,6 +21,12 @@ using namespace std;
 #include "lib/cover/cover-read.cpp"
 #include "lib/cover/cover-save.cpp"
 
+//Include regions libs
+#include "lib/region/region-struct.cpp"
+#include "lib/region/region-delete.cpp"
+#include "lib/region/region-save.cpp"
+#include "lib/region/region-str.cpp"
+
 //Include fix command functions
 #include "fix/fix-help.cpp"
 #include "fix/fix-main.cpp"
@@ -30,6 +34,12 @@ using namespace std;
 //Include get command function
 #include "get/get-help.cpp"
 #include "get/get-main.cpp"
+
+//Include indel command functions
+#include "indel/indel-help.cpp"
+#include "indel/indel-control.cpp"
+#include "indel/indel-find.cpp"
+#include "indel/indel-main.cpp"
 
 //Include index command functions
 #include "index/index-help.cpp"
@@ -57,6 +67,9 @@ int main(int argc, char **argv)
 
   //Check the get command
   if(cmd == "get"){ return get_main(argc-1, argv+1); }
+
+  //Check the indel command
+  if(cmd == "indel"){ return indel_main(argc-1, argv+1); }
 
   //Check the index command
   if(cmd == "index"){ return index_main(argc-1, argv+1); }
