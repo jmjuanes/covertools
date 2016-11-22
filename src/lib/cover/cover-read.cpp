@@ -36,7 +36,7 @@ void coverRead(string file, CoverList & l, int n)
     if(str == "") { continue; }
 
     //Converts string to array
-    strArr(str, arr, _MAX_BAMS, "\t");
+    strSplit(str, arr, _MAX_BAMS, "\t");
 
     //Create the new cover value
     aux = new Cover;
