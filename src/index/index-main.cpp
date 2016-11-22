@@ -160,7 +160,7 @@ int index_main(int argc, char *argv[])
       if(line == ""){ break; }
 
       //Converts the string to array
-      strArr(line, arr, 3, "\t");
+      strSplit(line, arr, 3, "\t");
 
       //Get the position
       int pos = stoi(arr[1]);
