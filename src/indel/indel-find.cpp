@@ -85,6 +85,9 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
     //Add the region start position
     aux->start = aux_cover->position;
 
+    //Add the region name
+    aux->name = "";
+
     //Initialize the next position
     aux->next = NULL;
 
@@ -115,7 +118,7 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
     aux->length = abs(aux->end - aux->start) + 1;
 
     //Check the length
-    if(aux->length != 1 && min_window <= aux->length)
+    if(aux->length > 1 && min_window <= aux->length)
     {
       //Check for empty region start
       if(start == NULL)
