@@ -115,8 +115,8 @@ int normalize_main(int argc, char *argv[])
   //Check for display the help
   if(show_help == true){ return normalize_help(); }
 
-  //Get the new list
-  Chr l = NULL;
+  //Initialize the new coverage list
+  CoverList l = NULL;
 
   //Initialize the list
   coverRead(cover_input_file, l, cover_num);
