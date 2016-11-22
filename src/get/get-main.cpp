@@ -129,7 +129,7 @@ int get_main(int argc, char *argv[])
     if(aux == ""){ break; }
 
     //Split the region
-    strArr(aux, arr, 4, "\t");
+    strSplit(aux, arr, 4, "\t");
 
     //Check the region name
     if(strLower(arr[0]) != region){ continue; }
