@@ -1,5 +1,5 @@
 //Use the mean algorithm to normalize the coverage matrix
-void normalize_mean(Chr l, int num)
+void normalize_mean(CoverList l, int num)
 {
   //Initialize the cover mean
   double * mean = new double[num];
@@ -18,13 +18,10 @@ void normalize_mean(Chr l, int num)
 }
 
 //Calculate the mean of a cover list
-void normalize_mean_calculate(Chr l, double mean[], int n)
+void normalize_mean_calculate(CoverList l, double mean[], int n)
 {
-  //Chromosome pointer
-  Chr c = l;
-
-  //Positions pointer
-  Pos p = NULL;
+  //Auxiliar cover list pointer
+  CoverList aux = l;
 
   //Total count
   int total = 0;
@@ -33,30 +30,20 @@ void normalize_mean_calculate(Chr l, double mean[], int n)
   for(int i = 0; i < n; i++){ mean[i] = 0; }
 
   //Read the full list
-  while(c != NULL)
+  while(aux != NULL)
   {
-    //Get the position
-    p = c->positions;
-
-    //Read all the positions
-    while(p != NULL)
+    //Get all the coverage values
+    for(int i = 0; i < n; i++)
     {
-      //Get all the coverage values
-      for(int i = 0; i < n; i++)
-      {
-        //Increment the mean
-        mean[i] = mean[i] + p->cover[i];
-      }
-
-      //Next position
-      p = p->next;
-
-      //Increment the counter
-      total = total + 1;
+      //Increment the mean
+      mean[i] = mean[i] + aux->values[i];
     }
 
-    //Next chromosome
-    c = c->next;
+    //Next cover position
+    aux = aux->next;
+
+    //Increment the counter
+    total = total + 1;
   }
 
   //Calculate the mean
@@ -71,36 +58,23 @@ void normalize_mean_calculate(Chr l, double mean[], int n)
 }
 
 //Apply the mean for each value
-void normalize_mean_apply(Chr & l, double mean[], int n)
+void normalize_mean_apply(CoverList & l, double mean[], int n)
 {
-  //Chromosome pointer
-  Chr c = l;
-
-  //Positions pointer
-  Pos p = NULL;
+  //Auxiliar coverage list pointer
+  CoverList aux = l;
 
   //Read the full list
-  while(c != NULL)
+  while(aux != NULL)
   {
-    //Get the position
-    p = c->positions;
-
-    //Read all the positions
-    while(p != NULL)
+    //Update the coverage values
+    for(int i = 0; i < n; i++)
     {
-      //Calculate the new cover values
-      for(int i = 0; i < n; i++)
-      {
-        //Increment the mean
-        p->cover[i] = float (p->cover[i] / mean[i]);
-      }
-
-      //Next position
-      p = p->next;
+      //Increment the mean
+      aux->values[i] = float (aux->values[i] / mean[i]);
     }
 
-    //Next chromosome
-    c = c->next;
+    //Next coverage element
+    aux = aux->next;
   }
 
   //Exit
