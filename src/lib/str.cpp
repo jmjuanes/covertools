@@ -1,11 +1,8 @@
 //Covert a string to lower case
 string strLower(string str)
 {
-  //Get the string length
-  int str_length = (int) strlen(str);
-
   //Read all the characters
-  for(int i = 0; i < str_length; i++)
+  for(int i = 0; i < str.length(); i++)
   {
     //Convert the character to lower case
     str[i] = tolower(str[i]);
@@ -24,11 +21,8 @@ string strLowerCase(string str)
 //Convert a string to upper case
 string strUpper(string str)
 {
-  //Get the string length
-  int str_length = (int) strlen(str);
-
   //Read all the characters
-  for(int i = 0; i < str_length; i++)
+  for(int i = 0; i < str.length(); i++)
   {
     //Convert the character to upper case
     str[i] = toupper(str[i]);
