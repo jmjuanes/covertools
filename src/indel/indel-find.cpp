@@ -92,7 +92,7 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
       if(aux->position + 1 < aux_cover->position){ break; }
 
       //Check if is a valid region
-      is_valid = indel_find_valid(aux_cover->values[index], aux_control->values[0], min, threshold);
+      is_valid = indel_find_valid(aux_cover->values[index], aux_control->values[0], min_cover, threshold);
     }
     while(is_valid == true && aux_cover->next != NULL);
 
