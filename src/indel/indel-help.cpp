@@ -1,5 +1,5 @@
 //Print the indel command help
-int cnv_help(void)
+int indel_help(void)
 {
   //Display the help
   cout << "Covertools Insertions and Deletions " << _VERSION << endl;
