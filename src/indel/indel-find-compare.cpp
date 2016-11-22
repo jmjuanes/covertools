@@ -90,6 +90,9 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
 
       //Save the last element
       end = aux;
+
+      //Increment the number of regions detected
+      counter = counter + 1;
     }
 
     //Next coverage list position
@@ -97,9 +100,6 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
 
     //Next control list position
     aux_control = aux_control->next;
-
-    //Increment the number of regions detected
-    counter = counter + 1;
   }
 
   //Display the count
