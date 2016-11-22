@@ -38,6 +38,8 @@ using namespace std;
 //Include indel command functions
 #include "indel/indel-help.cpp"
 #include "indel/indel-control.cpp"
+#include "indel/indel-find-valid.cpp"
+#include "indel/indel-find-compare.cpp"
 #include "indel/indel-find.cpp"
 #include "indel/indel-main.cpp"
 
