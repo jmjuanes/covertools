@@ -49,25 +49,22 @@ void indel_control(CoverList & list_cover, CoverList & list_control, int n, int 
     {
       //Initialize the control list
       list_control = aux2;
-
-      //Initialize the control list end
-      end = aux2;
     }
     else
     {
       //Add the next cover value
-      end->next = aux2;
-
-      //Update the end pointer
-      end = aux2;
+      end2->next = aux2;
     }
+
+    //Update the end pointer
+    end2 = aux2;
 
     //Next coverage value
     aux1 = aux1->next;
   }
 
   //Finish the list
-  end->next = NULL;
+  end2->next = NULL;
 
   //Exit
   return;
