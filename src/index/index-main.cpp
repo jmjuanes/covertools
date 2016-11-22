@@ -166,7 +166,7 @@ int index_main(int argc, char *argv[])
       int pos = stoi(arr[1]);
 
       //Check the position
-      if(region->end < pos || region->chromosome != arr[0]){ break; }
+      if(region.end < pos || region.chromosome != arr[0]){ break; }
 
       //Increment the buffer end
       buff_end = buff_end + line.size() + 1;
@@ -179,7 +179,7 @@ int index_main(int argc, char *argv[])
     }
 
     //Save the values
-    output_index << region->name << "\t" << buff_start << "\t" << buff_end << "\t" << lines_count << endl;
+    output_index << region.name << "\t" << buff_start << "\t" << buff_end << "\t" << lines_count << endl;
   }
 
   //Close the index file
