@@ -89,7 +89,7 @@ void indel_find_compare(CoverList list_cover, CoverList list_control, int index,
       if(aux_cover->chromosome != aux->chromosome){ break; }
 
       //Check the position
-      if(aux->position + 1 < aux_cover->position){ break; }
+      if(aux->end + 1 < aux_cover->position){ break; }
 
       //Check if is a valid region
       is_valid = indel_find_valid(aux_cover->values[index], aux_control->values[0], min_cover, threshold);
