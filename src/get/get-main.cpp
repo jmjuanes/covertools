@@ -23,7 +23,7 @@ int get_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the region argument
-    if(checkOpt("-region", 8, arg_value, arg_length) == true)
+    if(checkOpt("-region", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -55,7 +55,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the index argument
-    else if(checkOpt("-index", 2, arg_value, arg_length) == true)
+    else if(checkOpt("-index", 6, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
