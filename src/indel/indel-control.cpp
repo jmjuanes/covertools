@@ -1,8 +1,8 @@
 //Get the control coverage
-void indel_control(CoverList & list_all, CoverList & list_control, int n, int control)
+void indel_control(CoverList & list_cover, CoverList & list_control, int n, int control)
 {
   //Auxiliar pointers
-  CoverList aux1 = list_all, aux2 = NULL, end2 = NULL;
+  CoverList aux1 = list_cover, aux2 = NULL, end2 = NULL;
 
   //Initialize the control list
   list_control = NULL;
