@@ -5,10 +5,10 @@ int get_main(int argc, char *argv[])
   bool show_help = false;
 
   //Has parameters
-  bool cover_has = false, index_has = false, region_has = false;
+  bool cover_has = false, index_has = false, region_name_has = false, region_file_has = false;
 
   //Files parameters
-  string region, cover_file, index_file;
+  string region_name, region_file, cover_file, index_file;
 
   //Check the number of arguments
   if(argc == 1){ return get_help(); }
@@ -29,10 +29,10 @@ int get_main(int argc, char *argv[])
       if(argc <= i + 1){ continue; }
 
       //Set region name as true
-      region_has = true;
+      region_name_has = true;
 
       //Save the region name
-      region = argv[i + 1];
+      region_name = argv[i + 1];
 
       //Increment the i counter
       i = i + 1;
@@ -49,6 +49,22 @@ int get_main(int argc, char *argv[])
 
       //Save the input cover file
       cover_file = argv[i + 1];
+
+      //Increment the i counter
+      i = i + 1;
+    }
+
+    //Check the output regions file argument
+    else if(checkOpt("-out", 6, arg_value, arg_length) == true)
+    {
+      //Check the count
+      if(argc <= i + 1){ continue; }
+
+      //Set input cover
+      region_file_has = true;
+
+      //Save the input cover file
+      region_file = argv[i + 1];
 
       //Increment the i counter
       i = i + 1;
@@ -84,14 +100,20 @@ int get_main(int argc, char *argv[])
   //Check for no input cover file
   if(cover_has == false){ cerr << "ERROR: no cover file provided" << endl; show_help = true; }
 
-  //Check for no output cover file
-  if(index_has == false){ cerr << "ERROR: no output index file provided" << endl; show_help = true; }
+  //Check for no input index file
+  if(index_has == false){ cerr << "ERROR: no index file provided" << endl; show_help = true; }
+
+  //Check for no output regions file
+  if(region_file_has == false){ cerr << "ERROR: no output regions file provided" << endl; show_help = true; }
 
   //Check for display the help
   if(show_help == true){ return get_help(); }
 
   //ifstreams
   ifstream input_cover, input_index;
+
+  //Ofstreams
+  ofstream output_region;
 
   //Open the cover file
   input_cover.open(cover_file.c_str());
@@ -111,6 +133,16 @@ int get_main(int argc, char *argv[])
   {
     //Display error and exit
     cerr << "Error opening " << index_file << endl; return EXIT_FAILURE;
+  }
+
+  //Open the output cover
+  output_region.open(region_file.c_str());
+
+  //Check for error
+  if(output_region.is_open() == false)
+  {
+    //Display error
+    cerr << "Error opening " << region_file << endl; return EXIT_FAILURE;
   }
 
   //Auxiliar strings
@@ -153,7 +185,7 @@ int get_main(int argc, char *argv[])
       getline(input_cover, line);
 
       //Display the line on console
-      cout << line << endl;
+      output_region << line << endl;
 
       //Increment the counter
       counter = counter + 1;
@@ -168,6 +200,9 @@ int get_main(int argc, char *argv[])
 
   //Close the index file
   input_index.close();
+
+  //Close the region file
+  output_region.close();
 
   //Exit
   return 0;
