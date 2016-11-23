@@ -148,8 +148,8 @@ int get_main(int argc, char *argv[])
   //Auxiliar strings
   string aux, line = "", arr[4];
 
-  //Parse the region
-  region = strLower(region);
+  //Parse the region name
+  region_name = strLower(region_name);
 
   //Read all the regions
   while(!input_index.eof())
@@ -164,7 +164,7 @@ int get_main(int argc, char *argv[])
     strSplit(aux, arr, 4, "\t");
 
     //Check the region name
-    if(strLower(arr[0]) != region){ continue; }
+    if(strLower(arr[0]) != region_name){ continue; }
 
     //Get the start position
     int start = stoi(arr[1]);
