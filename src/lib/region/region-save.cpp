@@ -27,7 +27,17 @@ void regionSave(string file, RegionList list)
   while(aux != NULL)
   {
     //Add the values
-    output << aux->chromosome << tab << aux->start << tab << aux->end << tab << aux->name << endl;
+    output << aux->chromosome << tab << aux->start << tab << aux->end;
+
+    //Check the region name
+    if(aux->name != "")
+    {
+      //Add the region name
+      output << tab << aux->name;
+    }
+
+    //end this line
+    output << endl;
 
     //Next region
     aux = aux->next;
