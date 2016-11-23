@@ -95,7 +95,7 @@ int get_main(int argc, char *argv[])
   }
 
   //Check for no region name
-  if(region_has == false){ cerr << "ERROR: no wanted region provided" << endl; show_help = true; }
+  if(region_name_has == false){ cerr << "ERROR: no wanted region provided" << endl; show_help = true; }
 
   //Check for no input cover file
   if(cover_has == false){ cerr << "ERROR: no cover file provided" << endl; show_help = true; }
