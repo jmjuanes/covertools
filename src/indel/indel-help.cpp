@@ -13,6 +13,7 @@ int indel_help(void)
   cout << "Mandatory: "  << endl;
   cout << "\t-cover\t"   << "Path to the coverage file." << endl;
   cout << "\t-n\t"       << "Number of coverage columns." << endl;
+  cout << "\t-control\t" << "Column to be used as a control" << endl;
   cout << "\t-threshold" << "Threshold value" << endl;
   cout << "\t-minRegion" << "Minimum region length" << endl;
   cout << "\t-minCover"  << "Minimum coverage value" << endl;
