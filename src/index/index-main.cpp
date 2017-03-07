@@ -23,7 +23,7 @@ int index_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the bed file argument
-    if(checkOpt("-bed", 4, arg_value, arg_length) == true)
+    if(check_opt("--bed", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -39,7 +39,7 @@ int index_main(int argc, char *argv[])
     }
 
     //Check the cover input argument
-    else if(checkOpt("-cover", 6, arg_value, arg_length) == true)
+    else if(check_opt("--cover", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -55,7 +55,7 @@ int index_main(int argc, char *argv[])
     }
 
     //Check the index output file option
-    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
+    else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -160,7 +160,7 @@ int index_main(int argc, char *argv[])
       if(line == ""){ break; }
 
       //Converts the string to array
-      strSplit(line, arr, 3, "\t");
+      str_split(line, arr, 3, "\t");
 
       //Get the position
       int pos = stoi(arr[1]);
