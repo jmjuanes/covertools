@@ -23,7 +23,7 @@ int get_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the region argument
-    if(checkOpt("--region", 8, arg_value, arg_length) == true)
+    if(check_opt("--region", 8, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -39,7 +39,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the cover input argument
-    else if(checkOpt("--cover", 7, arg_value, arg_length) == true)
+    else if(check_opt("--cover", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -55,7 +55,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the output regions file argument
-    else if(checkOpt("--out", 5, arg_value, arg_length) == true)
+    else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -71,7 +71,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the index argument
-    else if(checkOpt("--index", 7, arg_value, arg_length) == true)
+    else if(check_opt("--index", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
