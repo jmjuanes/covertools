@@ -7,23 +7,22 @@ int indel_help(void)
   cout << "Find regions with insertions or deletions." << endl << endl;
 
   //Display the usage
-  cout << "Usage: covertools indel [OPTIONS] -cover <COVER_FILE> -n <NUM_COVERS> -out <OUTPUT_FILE>" << endl << endl;
+  cout << "Usage: covertools indel [OPTIONS] --cover <COVER_FILE> --out <OUTPUT_FILE>" << endl << endl;
 
   //Display the mandatory arguments
   cout << "Mandatory:   " << endl;
-  cout << " -cover      " << "Path to the coverage file." << endl;
-  cout << " -n          " << "Number of coverage columns." << endl;
-  cout << " -threshold  " << "Threshold value" << endl;
-  cout << " -minRegion  " << "Minimum region length" << endl;
-  cout << " -minCover   " << "Minimum coverage value" << endl;
-  cout << " -out        " << "Path to the output regions file." << endl;
+  cout << " --cover      " << "Path to the coverage file." << endl;
+  cout << " --threshold  " << "Threshold value" << endl;
+  cout << " --minRegion  " << "Minimum region length" << endl;
+  cout << " --minCover   " << "Minimum coverage value" << endl;
+  cout << " --out        " << "Path to the output regions file." << endl;
 
   //Line break
   cout << endl;
 
   //Display the options
-  cout << "Options:     " << endl;
-  cout << " -control    " << "Column of the cover matrix to be used as a control." << endl;
+  cout << "Options:      " << endl;
+  cout << " --control    " << "Column of the cover matrix to be used as a control." << endl;
 
   //Exit
   return 0;
