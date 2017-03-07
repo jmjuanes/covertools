@@ -5,7 +5,7 @@ int normalize_main(int argc, char *argv[])
   bool show_help = false;
 
   //Has parameters
-  bool cover_input_has = false, cover_output_has = false, cover_num_has = false, algorithm_has = false;
+  bool cover_input_has = false, cover_output_has = false, algorithm_has = false;
 
   //String parameters
   string cover_input_file, cover_output_file, algorithm;
@@ -29,7 +29,7 @@ int normalize_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the algorithm option
-    if(checkOpt("-a", 2, arg_value, arg_length) == true)
+    if(check_opt("--a", 3, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -45,7 +45,7 @@ int normalize_main(int argc, char *argv[])
     }
 
     //Check the cover input option
-    else if(checkOpt("-cover", 6, arg_value, arg_length) == true)
+    else if(check_opt("--cover", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -61,7 +61,7 @@ int normalize_main(int argc, char *argv[])
     }
 
     //Check the cover output option
-    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
+    else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -71,22 +71,6 @@ int normalize_main(int argc, char *argv[])
 
       //Save the output cover file
       cover_output_file = argv[i + 1];
-
-      //Increment the i counter
-      i = i + 1;
-    }
-
-    //Check the -n option
-    else if(checkOpt("-n", 2, arg_value, arg_length) == true)
-    {
-      //Check the count
-      if(argc <= i + 1){ continue; }
-
-      //Set num
-      cover_num_has = true;
-
-      //Save the number
-      cover_num = stoi(argv[i + 1]);
 
       //Increment the i counter
       i = i + 1;
@@ -106,9 +90,6 @@ int normalize_main(int argc, char *argv[])
   //Check for no output cover file
   if(cover_output_has == false){ cerr << "ERROR: no output cover file provided" << endl; show_help = true; }
 
-  //Check for no cover num
-  if(cover_num_has == false){ cerr << "ERROR: no cover num provided" << endl; show_help = true; }
-
   //Check for no algorithm
   if(algorithm_has == false){ algorithm = "mean"; }
 
@@ -118,8 +99,11 @@ int normalize_main(int argc, char *argv[])
   //Initialize the new coverage list
   CoverList l = NULL;
 
+  //Count the number of coverages columns
+  cover_num = cover_count(cover_input_file);
+
   //Initialize the list
-  coverRead(cover_input_file, l, cover_num);
+  cover_read(cover_input_file, l, cover_num);
 
   //Check the normalize algorithm
   if(algorithm == "mean")
@@ -129,10 +113,10 @@ int normalize_main(int argc, char *argv[])
   }
 
   //Save the cover file
-  coverSave(cover_output_file, l, cover_num);
+  cover_save(cover_output_file, l, cover_num);
 
   //Delete the cover list
-  coverDelete(l);
+  cover_delete(l);
 
   //Exit
   return 0;
