@@ -1,5 +1,5 @@
 //Save the list to file
-void coverSave(string file, CoverList l, int n)
+void cover_save(string file, CoverList l, int n)
 {
   //Ofstream object
   ofstream output;
