@@ -7,13 +7,13 @@ int fix_help(void)
   cout << "Add all positions on the coverage matrix that has zero depth." << endl << endl;
 
   //Display the usage
-  cout << "Usage: covertools fix -bed <BED_FILE> -cover <COVER_INPUT> -out <COVER_OUTPUT>" << endl << endl;
+  cout << "Usage: covertools fix --bed <BED_FILE> --cover <COVER_INPUT> --out <COVER_OUTPUT>" << endl << endl;
 
-  //Display the mandatory arguments
-  cout << "Mandatory: " << endl;
-  cout << "\t-bed\t"    << "Path to the BED file with the delimited regions." << endl;
-  cout << "\t-cover\t"  << "Path to the input coverage file." << endl;
-  cout << "\t-out\t"    << "Path to the output coverage file." << endl;
+  //Display the mandatory options
+  cout << "Mandatory options: " << endl;
+  cout << "\t--bed\t"    << "Path to the BED file with the delimited regions." << endl;
+  cout << "\t--cover\t"  << "Path to the input coverage file." << endl;
+  cout << "\t--out\t"    << "Path to the output coverage file." << endl;
 
   //Exit
   return 0;
