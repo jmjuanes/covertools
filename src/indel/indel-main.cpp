@@ -5,7 +5,7 @@ int indel_main(int argc, char *argv[])
   bool show_help = false;
 
   //Has parameters
-  bool regions_has = false, cover_has = false, cover_num_has = false, cover_control_has = false;
+  bool regions_has = false, cover_has = false, cover_control_has = false;
   bool min_region_has = false, min_cover_has = false, threshold_has = false;
 
   //Files parameters
@@ -33,7 +33,7 @@ int indel_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the cover input option
-    if(checkOpt("-cover", 6, arg_value, arg_length) == true)
+    if(check_opt("--cover", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -49,7 +49,7 @@ int indel_main(int argc, char *argv[])
     }
 
     //Check the output regions file
-    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
+    else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -64,24 +64,8 @@ int indel_main(int argc, char *argv[])
       i = i + 1;
     }
 
-    //Check the number of coverage columns
-    else if(checkOpt("-n", 2, arg_value, arg_length) == true)
-    {
-      //Check the count
-      if(argc <= i + 1){ continue; }
-
-      //Set number of coverage columns as true
-      cover_num_has = true;
-
-      //Save the number of coverage columns
-      cover_num = stoi(argv[i + 1]);
-
-      //Increment the i counter
-      i = i + 1;
-    }
-
     //Check the control column
-    else if(checkOpt("-control", 8, arg_value, arg_length) == true)
+    else if(check_opt("--control", 9, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -97,7 +81,7 @@ int indel_main(int argc, char *argv[])
     }
 
     //Check the threshold option
-    else if(checkOpt("-threshold", 10, arg_value, arg_length) == true)
+    else if(check_opt("--threshold", 11, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -113,7 +97,7 @@ int indel_main(int argc, char *argv[])
     }
 
     //Check the min region option
-    else if(checkOpt("-minRegion", 10, arg_value, arg_length) == true)
+    else if(check_opt("--minRegion", 11, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -129,7 +113,7 @@ int indel_main(int argc, char *argv[])
     }
 
     //Check the min cover option
-    else if(checkOpt("-minCover", 9, arg_value, arg_length) == true)
+    else if(check_opt("--minCover", 9, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -158,9 +142,6 @@ int indel_main(int argc, char *argv[])
   //Check for no output regions file
   if(regions_has == false){ cerr << "ERROR: no output regions file provided" << endl; show_help = true; }
 
-  //Check for no cover num
-  if(cover_num_has == false){ cerr << "ERROR: number of coverage columns not provided" << endl; show_help = true; }
-
   //Check for no control option
   if(cover_control_has == false){ cover_control = -1; }
 
@@ -176,6 +157,9 @@ int indel_main(int argc, char *argv[])
   //Check for display the help
   if(show_help == true){ return indel_help(); }
 
+  //Count the number of coverage columns
+  cover_num = cover_count(cover_file);
+
   //Initialize the coverage lists
   CoverList list_cover, list_control;
 
@@ -183,7 +167,7 @@ int indel_main(int argc, char *argv[])
   RegionList list_regions;
 
   //Initialize the list
-  coverRead(cover_file, list_cover, cover_num);
+  cover_read(cover_file, list_cover, cover_num);
 
   //Build the control coverage
   indel_control(list_cover, list_control, cover_num, cover_control);
@@ -192,16 +176,16 @@ int indel_main(int argc, char *argv[])
   indel_find(list_cover, list_control, list_regions, cover_num, cover_control, min_cover, min_region, threshold);
 
   //Save the regions
-  regionSave(regions_file, list_regions);
+  region_save(regions_file, list_regions);
 
   //Delete the cover list
-  coverDelete(list_cover);
+  cover_delete(list_cover);
 
   //Delete the cover control list
-  coverDelete(list_control);
+  cover_delete(list_control);
 
   //Delete the regions list
-  regionDelete(list_regions);
+  region_delete(list_regions);
 
   //Exit
   return 0;
