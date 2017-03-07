@@ -23,7 +23,7 @@ int get_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the region argument
-    if(checkOpt("-region", 7, arg_value, arg_length) == true)
+    if(checkOpt("--region", 8, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -39,7 +39,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the cover input argument
-    else if(checkOpt("-cover", 6, arg_value, arg_length) == true)
+    else if(checkOpt("--cover", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -55,7 +55,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the output regions file argument
-    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
+    else if(checkOpt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -71,7 +71,7 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the index argument
-    else if(checkOpt("-index", 6, arg_value, arg_length) == true)
+    else if(checkOpt("--index", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -149,7 +149,7 @@ int get_main(int argc, char *argv[])
   string aux, line = "", arr[4];
 
   //Parse the region name
-  region_name = strLower(region_name);
+  region_name = str_lower(region_name);
 
   //Read all the regions
   while(!input_index.eof())
@@ -161,10 +161,10 @@ int get_main(int argc, char *argv[])
     if(aux == ""){ break; }
 
     //Split the region
-    strSplit(aux, arr, 4, "\t");
+    str_split(aux, arr, 4, "\t");
 
     //Check the region name
-    if(strLower(arr[0]) != region_name){ continue; }
+    if(str_lower(arr[0]) != region_name){ continue; }
 
     //Get the start position
     int start = stoi(arr[1]);
