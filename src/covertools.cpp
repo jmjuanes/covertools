@@ -11,12 +11,13 @@
 using namespace std;
 
 //Include libs
+#include "lib/variables.cpp"
 #include "lib/options.cpp"
 #include "lib/str.cpp"
-#include "lib/version.cpp"
 
 //Include cover libs
 #include "lib/cover/cover-struct.cpp"
+#include "lib/cover/cover-count.cpp"
 #include "lib/cover/cover-delete.cpp"
 #include "lib/cover/cover-read.cpp"
 #include "lib/cover/cover-save.cpp"
