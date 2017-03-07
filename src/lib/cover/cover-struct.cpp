@@ -1,6 +1,3 @@
-//Max number of bam files
-const int _MAX_BAMS = 150;
-
 //Initialize the structures
 struct Cover;
 
@@ -12,7 +9,7 @@ struct Cover
 {
   //Chromosome
   string chromosome;
-  
+
   //Position
   int position;
 
