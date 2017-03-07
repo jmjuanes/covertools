@@ -1,5 +1,5 @@
 //Save a region list to a file
-void regionSave(string file, RegionList list)
+void region_save(string file, RegionList list)
 {
   //Ofstream object
   ofstream output;
