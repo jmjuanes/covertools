@@ -1,5 +1,5 @@
 //Read a cover file
-void coverRead(string file, CoverList & l, int n)
+void cover_read(string file, CoverList & l, int n)
 {
   //Create the ifstream object
   ifstream input;
@@ -36,7 +36,7 @@ void coverRead(string file, CoverList & l, int n)
     if(str == "") { continue; }
 
     //Converts string to array
-    strSplit(str, arr, _MAX_BAMS, "\t");
+    str_split(str, arr, _MAX_BAMS, "\t");
 
     //Create the new cover value
     aux = new Cover;
