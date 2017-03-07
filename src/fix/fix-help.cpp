@@ -11,9 +11,9 @@ int fix_help(void)
 
   //Display the mandatory options
   cout << "Mandatory options: " << endl;
-  cout << "\t--bed\t"    << "Path to the BED file with the delimited regions." << endl;
-  cout << "\t--cover\t"  << "Path to the input coverage file." << endl;
-  cout << "\t--out\t"    << "Path to the output coverage file." << endl;
+  cout << " --bed    " << "Path to the BED file with the delimited regions." << endl;
+  cout << " --cover  " << "Path to the input coverage file." << endl;
+  cout << " --out    " << "Path to the output coverage file." << endl;
 
   //Exit
   return 0;
