@@ -1,5 +1,5 @@
 //Delete a region list
-void regionDelete(RegionList & r)
+void region_delete(RegionList & r)
 {
   //Auxiliar pointers
   RegionList aux1 = r, aux2;
