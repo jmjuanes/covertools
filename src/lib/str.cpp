@@ -1,5 +1,5 @@
 //Covert a string to lower case
-string strLower(string str)
+string str_lower(string str)
 {
   //Read all the characters
   for(int i = 0; i < str.length(); i++)
@@ -12,14 +12,14 @@ string strLower(string str)
 }
 
 //Lower case alias
-string strLowerCase(string str)
+string str_lower_case(string str)
 {
   //Return the string in lower case
-  return strLower(str);
+  return str_lower(str);
 }
 
 //Convert a string to upper case
-string strUpper(string str)
+string str_upper(string str)
 {
   //Read all the characters
   for(int i = 0; i < str.length(); i++)
@@ -32,14 +32,14 @@ string strUpper(string str)
 }
 
 //Upper case alias
-string strUpperCase(string str)
+string str_upper_case(string str)
 {
   //Return the string in upper case
-  return strUpper(str);
+  return str_upper(str);
 }
 
 //Convert a string to array
-int strSplit(string str, string arr[], int tam, string sep)
+int str_split(string str, string arr[], int tam, string sep)
 {
   //Aux vars
   int pos = 0, counter = 0;
