@@ -142,7 +142,7 @@ int index_main(int argc, char *argv[])
     if(aux == ""){ break; }
 
     //Get the region object
-    Region region = tabToRegion(aux);
+    Region region = tab_to_region(aux);
 
     //Reset the lines count
     lines_count = 0;
