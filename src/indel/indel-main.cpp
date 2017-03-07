@@ -113,7 +113,7 @@ int indel_main(int argc, char *argv[])
     }
 
     //Check the min cover option
-    else if(check_opt("--minCover", 9, arg_value, arg_length) == true)
+    else if(check_opt("--minCover", 10, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
