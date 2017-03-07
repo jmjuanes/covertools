@@ -1,5 +1,5 @@
 //Delete a cover structure
-void coverDelete(CoverList & l)
+void cover_delete(CoverList & l)
 {
   //Auxiliar pointers
   CoverList aux1 = l, aux2;
