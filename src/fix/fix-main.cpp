@@ -26,7 +26,7 @@ int fix_main(int argc, char *argv[])
     int arg_length = (int) strlen(argv[i]);
 
     //Check the -bed option
-    if(checkOpt("-bed", 4, arg_value, arg_length) == true)
+    if(check_opt("--bed", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -42,7 +42,7 @@ int fix_main(int argc, char *argv[])
     }
 
     //Check the cover input option -ci
-    else if(checkOpt("-cover", 6, arg_value, arg_length) == true)
+    else if(check_opt("--cover", 7, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -58,7 +58,7 @@ int fix_main(int argc, char *argv[])
     }
 
     //Check the cover output option -out
-    else if(checkOpt("-out", 4, arg_value, arg_length) == true)
+    else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
       if(argc <= i + 1){ continue; }
@@ -145,7 +145,7 @@ int fix_main(int argc, char *argv[])
     if(aux == ""){ break; }
 
     //Build the region
-    Region region = tabToRegion(aux);
+    Region region = tab_to_region(aux);
 
     //Initialize the position
     position = region.start;
@@ -160,7 +160,7 @@ int fix_main(int argc, char *argv[])
       if(line == ""){ break; }
 
       //Converts the string to array
-      strSplit(line, arr, 3, "\t");
+      str_split(line, arr, 3, "\t");
 
       //Get the position
       int pos = stoi(arr[1]);
