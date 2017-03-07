@@ -1,5 +1,5 @@
 //Convert a region structure to string
-string regionToStr(Region region)
+string region_to_str(Region region)
 {
   //Initialize the output string
   string str = "";
@@ -15,7 +15,7 @@ string regionToStr(Region region)
 }
 
 //Convert a tabulated string to a region structure
-Region tabToRegion(string str)
+Region tab_to_region(string str)
 {
   //Initialize the new region
   Region region;
@@ -24,7 +24,7 @@ Region tabToRegion(string str)
   string arr[10];
 
   //Split the region
-  int total = strSplit(str, arr, 10, "\t");
+  int total = str_split(str, arr, 10, "\t");
 
   //Check the total length
   if(total < 4)
