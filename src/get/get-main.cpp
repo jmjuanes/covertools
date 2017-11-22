@@ -5,10 +5,10 @@ int get_main(int argc, char *argv[])
   bool show_help = false;
 
   //Has parameters
-  bool cover_has = false, index_has = false, region_name_has = false, region_file_has = false;
+  bool cover_has = false, index_has = false, region_name_has = false; //, region_file_has = false;
 
   //Files parameters
-  string region_name, region_file, cover_file, index_file;
+  string cover_file, index_file, region_name; //, region_file;
 
   //Check the number of arguments
   if(argc == 1){ return get_help(); }
