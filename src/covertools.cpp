@@ -26,6 +26,7 @@ using namespace std;
 //Include regions libs
 #include "lib/region/region-struct.cpp"
 #include "lib/region/region-delete.cpp"
+#include "lib/region/region-print.cpp"
 #include "lib/region/region-save.cpp"
 #include "lib/region/region-str.cpp"
 
