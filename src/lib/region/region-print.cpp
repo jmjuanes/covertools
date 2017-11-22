@@ -27,9 +27,6 @@ void region_print(RegionList list)
     aux = aux->next;
   }
 
-  //Close the output file
-  output.close();
-
   //Exit
   return;
 }
