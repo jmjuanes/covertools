@@ -5,11 +5,11 @@ int indel_main(int argc, char *argv[])
   bool show_help = false;
 
   //Has parameters
-  bool regions_has = false, cover_has = false, cover_control_has = false;
+  bool cover_has = false, cover_control_has = false; //, regions_has = false;
   bool min_region_has = false, min_cover_has = false, threshold_has = false;
 
   //Files parameters
-  string cover_file, regions_file;
+  string cover_file; //, regions_file;
 
   //Integer parameters
   int cover_num, cover_control;
@@ -49,6 +49,8 @@ int indel_main(int argc, char *argv[])
     }
 
     //Check the output regions file
+    // --> Now the indel regions will be printed in console instead of saving to a file
+    /*
     else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
@@ -63,6 +65,7 @@ int indel_main(int argc, char *argv[])
       //Increment the i counter
       i = i + 1;
     }
+    */
 
     //Check the control column
     else if(check_opt("--control", 9, arg_value, arg_length) == true)
@@ -140,7 +143,7 @@ int indel_main(int argc, char *argv[])
   if(cover_has == false){ cerr << "ERROR: no coverage file provided" << endl; show_help = true; }
 
   //Check for no output regions file
-  if(regions_has == false){ cerr << "ERROR: no output regions file provided" << endl; show_help = true; }
+  //if(regions_has == false){ cerr << "ERROR: no output regions file provided" << endl; show_help = true; }
 
   //Check for no control option
   if(cover_control_has == false){ cover_control = -1; }
@@ -166,7 +169,7 @@ int indel_main(int argc, char *argv[])
   //Initialize the regions list
   RegionList list_regions;
 
-  //Initialize the list
+  //Initialize the coverage list
   cover_read(cover_file, list_cover, cover_num);
 
   //Build the control coverage
@@ -175,8 +178,9 @@ int indel_main(int argc, char *argv[])
   //Find the regions
   indel_find(list_cover, list_control, list_regions, cover_num, cover_control, min_cover, min_region, threshold);
 
-  //Save the regions
-  region_save(regions_file, list_regions);
+  //---Save the regions--- Print regions in console
+  //region_save(regions_file, list_regions);
+  region_print(list_regions);
 
   //Delete the cover list
   cover_delete(list_cover);
