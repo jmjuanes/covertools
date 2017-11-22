@@ -192,7 +192,7 @@ int get_main(int argc, char *argv[])
       //Get the line
       getline(input_cover, line);
 
-      //Save the line to ---file---- console
+      //Save the line to ---file--- console
       //output_region << line << endl;
       cout << line << endl;
 
