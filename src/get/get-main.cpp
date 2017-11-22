@@ -55,6 +55,9 @@ int get_main(int argc, char *argv[])
     }
 
     //Check the output regions file argument
+    // --> Now we will display the coverage values in console instead of save it to a file
+    // --> If user wants to save it to a file, he must pipe the output to the file manually
+    /*
     else if(check_opt("--out", 5, arg_value, arg_length) == true)
     {
       //Check the count
@@ -69,6 +72,7 @@ int get_main(int argc, char *argv[])
       //Increment the i counter
       i = i + 1;
     }
+    */
 
     //Check the index argument
     else if(check_opt("--index", 7, arg_value, arg_length) == true)
@@ -104,7 +108,8 @@ int get_main(int argc, char *argv[])
   if(index_has == false){ cerr << "ERROR: no index file provided" << endl; show_help = true; }
 
   //Check for no output regions file
-  if(region_file_has == false){ cerr << "ERROR: no output regions file provided" << endl; show_help = true; }
+  // --> Output will be printed in console
+  //if(region_file_has == false){ cerr << "ERROR: no output regions file provided" << endl; show_help = true; }
 
   //Check for display the help
   if(show_help == true){ return get_help(); }
@@ -113,7 +118,7 @@ int get_main(int argc, char *argv[])
   ifstream input_cover, input_index;
 
   //Ofstreams
-  ofstream output_region;
+  //ofstream output_region;
 
   //Open the cover file
   input_cover.open(cover_file.c_str());
@@ -135,6 +140,8 @@ int get_main(int argc, char *argv[])
     cerr << "Error opening " << index_file << endl; return EXIT_FAILURE;
   }
 
+  /*
+  // --> Outputs will be printed in console
   //Open the output cover
   output_region.open(region_file.c_str());
 
@@ -144,6 +151,7 @@ int get_main(int argc, char *argv[])
     //Display error
     cerr << "Error opening " << region_file << endl; return EXIT_FAILURE;
   }
+  */
 
   //Auxiliar strings
   string aux, line = "", arr[4];
@@ -184,8 +192,9 @@ int get_main(int argc, char *argv[])
       //Get the line
       getline(input_cover, line);
 
-      //Display the line on console
-      output_region << line << endl;
+      //Save the line to ---file---- console
+      //output_region << line << endl;
+      cout << line << endl;
 
       //Increment the counter
       counter = counter + 1;
@@ -202,7 +211,7 @@ int get_main(int argc, char *argv[])
   input_index.close();
 
   //Close the region file
-  output_region.close();
+  //output_region.close();
 
   //Exit
   return 0;
