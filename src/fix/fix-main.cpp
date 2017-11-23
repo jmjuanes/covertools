@@ -165,8 +165,12 @@ int fix_main(int argc, char *argv[])
       //Get the position
       int pos = stoi(arr[1]);
 
-      //Check the position
-      if(region.end < pos || region.chromosome != arr[0]){ break; }
+      //Check if the position is out of the region or if the chromosome is different
+      if(pos < region.start || region.end < pos || region.chromosome != arr[0])
+      {
+        //Region finished
+        break;
+      }
 
       //Add the missing positions
       while(position < pos)
